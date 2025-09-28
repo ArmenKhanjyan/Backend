@@ -1,0 +1,31 @@
+<h1>AddProduct</h1>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.11.0/axios.min.js"></script>
+
+  
+<form id="product">
+    <div>
+      <label>model</label>
+      <input type="text" id="model" name="model">
+    </div>
+    <div>            
+      <label>price</label>
+      <input type="number" id="price" name="price">
+   </div>
+   <div>
+      <button type="submit">Save</button>
+      <a href="/">Back to  List</a>
+   </div>
+</form>
+<script>
+   const form = document.getElementById("product")
+   form.addEventListener("submit", function(e) {
+   e.preventDefault()
+
+   const model = document.getElementById("model").value
+   const price = document.getElementById("price").value
+   
+   axios.post("/products/foo",{model,price})
+       .then(res => console.log("file saved",res.data))
+       .catch(err => console.log("err",err))
+   })
+</script>

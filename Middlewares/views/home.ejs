@@ -1,0 +1,28 @@
+<h1>List</h1>
+<ul id="product-list"></ul>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.11.0/axios.min.js"></script>
+<script>
+  axios.get("/product/foo") 
+    .then(res => {
+       const products = res.data.product; 
+       const ht = document.getElementById("product-list");
+       products.forEach(element => {
+          ht.innerHTML += `
+            <li>
+               <a href=/post/${element.id}>UserPage</a>
+            </li>
+          `;
+       });
+    })
+    .catch(err => {
+      console.log(err);
+    });
+</script>
+<a href="/add">AddUser</a>
+
+
+
+
+
+
+
